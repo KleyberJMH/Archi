@@ -1,0 +1,19 @@
+{
+  "name": "archi",
+  "version": "1.0.0",
+  "description": "Discord Bot for DofusTouch Servers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KleyberJMH/ArchiBot.git"
+  },
+  "author": "KleyberJMH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KleyberJMH/ArchiBot/issues"
+  },
+  "homepage": "https://github.com/KleyberJMH/ArchiBot#readme"
+}
