@@ -1,0 +1,65 @@
+const { 
+    SlashCommandBuilder, 
+    PermissionFlagsBits, 
+    ChannelType, 
+    InteractionType} 
+    = require('discord.js')
+const welcomeChannelSchema = require('../../models/WelcomeChannel')
+
+const data = new SlashCommandBuilder()
+    .setName('setup-welcome-channel')
+    .setDescription('Setup a channel to send welcome messages to')
+    .setDMPermission(false)
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .addChannelOption((option) => 
+    option
+        .setName('target-channel')
+        .setDescription('The channel to get welcome message in.')
+        .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
+        .setRequired(true)
+    )
+    .addStringOption((option) => 
+    option
+        .setName('custom-message')
+        .setDescription('TEMPLATES: {mention-member} {username} {server-name}')
+    )
+
+    async function run({ interaction }) {
+        try {
+            const targetChannel = interaction.options.getChannel('target-channel')
+            const customMessage = interaction.options.getString('custom-message')
+
+            await interaction.deferReply({ephemeral: true})
+
+            const query = {
+                guildId: interaction.guildId,
+                channelId: targetChannel.id,
+            }
+
+            const channelExistInDb = await welcomeChannelSchema.exists(query)
+
+            if(channelExistInDb){
+                interaction.followUp('This channel has been cofigured for welcome mensage')
+                return
+            }
+
+            const newWelcomeChannel = new welcomeChannelSchema({
+                ...query,
+                customMessage,
+            })
+
+            newWelcomeChannel
+            .save()
+            .then(()=> {
+                interaction.followUp(`Configured ${targetChannel} to receive welcome messages`)
+            })
+            .catch(() => {
+                interaction.followUp('Database error. Plese try again later')
+                console.log(`DB error in ${__filename}:\n`, error)
+            })
+        } catch (error) {
+            console.log(`Error in ${__filename}: \n`, error)
+        }
+    }
+
+module.exports = { data, run }
