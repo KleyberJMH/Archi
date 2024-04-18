@@ -1,10 +1,11 @@
 const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require("discord.js");
 const welcomeChannelSchema = require('../../models/WelcomeChannel')
+
 const data = new SlashCommandBuilder()
 .setName('remove-welcome-channel')
 .setDescription('Remove a welcome channel')
 .setDMPermission(false)
-.setDefaultMemberPermissions(PermissionFlagsBits)
+.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
 .addChannelOption((option) =>
     option
         .setName('target-channel')
@@ -35,7 +36,7 @@ async function run({interaction}) {
         .then(() => {
             interaction.followUp(`Removed ${targetChannel} from receiving welcome messages`)
         })
-        .catch((error) => {
+        .catch(() => {
             interaction.followUp('Database error. Please try again later')
                 console.log(`DB error in ${__filename}:\n`, error)
         })

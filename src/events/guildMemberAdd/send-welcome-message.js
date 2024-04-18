@@ -14,7 +14,7 @@ module.exports = async (guildMember) => {
             const targetChannel = guildMember.guild.channels.cache.get(welcomeConfig.channelId
             ) || (await guildMember.guild.channels.fetch(welcomeConfig.channelId))
 
-            if(!tagertChannel) {
+            if(!targetChannel) {
                 welcomeChannelSchema.findOneAndDelete({
                     guildId: guildMember.guild.id,
                     channelId: welcomeConfig.channelId
