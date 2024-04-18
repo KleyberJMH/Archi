@@ -10,7 +10,7 @@ module.exports = {
 
         await handler.reloadCommands()
 
-        interaction.followUp('Reloaded!')
+        interaction.followUp('Pong!')
 
         
     },
