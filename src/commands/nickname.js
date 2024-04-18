@@ -1,23 +1,42 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { ReloadType } = require('commandkit') 
+const { 
+    SlashCommandBuilder, 
+    PermissionFlagsBits, 
+    ChannelType, 
+    InteractionType} 
+    = require('discord.js')
 
-module.exports = {
-    data: new SlashCommandBuilder()
+    /**
+ * @param {import('commandkit').SlashCommandProps} param0
+ */
+
+const data = new SlashCommandBuilder()
     .setName('nickname')
-    .setDescription('Rename your nickname to your in-game nick and add your Guild name'),
-    run: async ({ interaction, client, handler }) => {
-        await interaction.deferReply()
-        await handler.reloadCommands()
+    .setDescription('[NO FUNCIONA]Change your discord nickname to you in-game nickname')
+    .setDMPermission(false)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
+    .addStringOption((option) => 
+    option
+        .setName('nickname')
+        .setDescription('Enter your main in-game nickname')
+        .setRequired(true)
+    )
 
-        interaction.followUp('Reloaded!')
+    async function run({ interaction }) {
+        try {
+            const newNickname = interaction.options.getString('nickname')
+            const member =  interaction.member
+            const clanName = member.roles.cache.filter((role) => role.name == '- Mugiwara -')
+            await interaction.deferReply({ephemeral: true})
 
-        
-    },
-    options: {
-        //cooldown: '1d',
-        devOnly: true,
-        //userPermissions:['Administrator'],
-        //botPermissions:['BanMembers'],
-        //deleted: true,
+            // console.log(clanName.Role.name)
+            // member.nickname = newNickname
+            interaction.followUp(`Your nickname has changed to ${newNickname}`)
+                return
+
+            
+        } catch (error) {
+            console.log(`Error in ${__filename}:\n`, error)
+        }
     }
-}
+
+module.exports = { data, run }
