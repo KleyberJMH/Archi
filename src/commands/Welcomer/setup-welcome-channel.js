@@ -36,10 +36,10 @@ const data = new SlashCommandBuilder()
                 channelId: targetChannel.id,
             }
 
-            const channelExistInDb = await welcomeChannelSchema.exists(query)
+            const channelExistsInDb = await welcomeChannelSchema.exists(query)
 
-            if(channelExistInDb){
-                interaction.followUp('This channel has been cofigured for welcome mensage')
+            if(channelExistsInDb){
+                interaction.followUp('This channel has been cofigured for welcome messages')
                 return
             }
 
@@ -53,12 +53,12 @@ const data = new SlashCommandBuilder()
             .then(()=> {
                 interaction.followUp(`Configured ${targetChannel} to receive welcome messages`)
             })
-            .catch(() => {
-                interaction.followUp('Database error. Plese try again later')
+            .catch((error) => {
+                interaction.followUp('Database error. Please try again later')
                 console.log(`DB error in ${__filename}:\n`, error)
             })
         } catch (error) {
-            console.log(`Error in ${__filename}: \n`, error)
+            console.log(`Error in ${__filename}:\n`, error)
         }
     }
 

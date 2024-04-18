@@ -18,7 +18,7 @@ new CommandKit({
     devUserIds: ['235916525943521290'],
     eventsPath: `${__dirname}/events`,
     commandsPath: `${__dirname}/commands`,
-    //bulkRegister: true,
+    bulkRegister: true,
     validationsPath:`${__dirname}/validations`
 })
 
