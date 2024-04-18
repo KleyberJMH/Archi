@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js')
-import { ReloadType } from 'commandkit'
+const { ReloadType } = require('commandkit') 
 
 module.exports = {
     data: new SlashCommandBuilder()

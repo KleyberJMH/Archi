@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js')
 const { CommandKit } = require('commandkit')
 const mongoose = require('mongoose')
 require('dotenv/config');
