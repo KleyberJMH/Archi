@@ -1,0 +1,922 @@
+{
+    "archis": [
+        {
+            "name": "Abroesidor, el Navegante"
+        },
+        {
+            "name": "Abrajinieves, el Enanito"
+        },
+        {
+            "name": "Abrakíledo, el Patas Ligeras"
+        },
+        {
+            "name": "Abrakeponerse, el Optimista"
+        },
+        {
+            "name": "Abrakadabra, el Pata de Kabra"
+        },
+        {
+            "name": "Abrákneo, el Elegido"
+        },
+        {
+            "name": "Ábrakin, el Oscuro"
+        },
+        {
+            "name": "Abubanero, el Naranja"
+        },
+        {
+            "name": "Amlobdovar, el Movidista"
+        },
+        {
+            "name": "Arakniry, la Destripada"
+        },
+        {
+            "name": "Araknekros, el Salvaje"
+        },
+        {
+            "name": "Arkandinska, la Lírica"
+        },
+        {
+            "name": "Araklas Mausus, el Encofiado"
+        },
+        {
+            "name": "Araknosia, el Olvidadizo"
+        },
+        {
+            "name": "Abustin Pawits, el Bocasucia"
+        },
+        {
+            "name": "Bambudín, el Azteca"
+        },
+        {
+            "name": "Bambono, el Divino"
+        },
+        {
+            "name": "Bandiras, el zorro del clan Los Malagueños"
+        },
+        {
+            "name": "Banrí Mantís, el Pigmentado"
+        },
+        {
+            "name": "Barbrétzel, el Salado"
+        },
+        {
+            "name": "Barrostroporosis, el Frágil"
+        },
+        {
+            "name": "Bibolsón, el Anilloso"
+        },
+        {
+            "name": "Biblidiana, la Controvertida"
+        },
+        {
+            "name": "Biblues, el Ritmo"
+        },
+        {
+            "name": "Biblópera, el Fantasma"
+        },
+        {
+            "name": "Black Tegerwoddit, el Swinguero"
+        },
+        {
+            "name": "Blackowwibbit, el Imaginativo"
+        },
+        {
+            "name": "Blómperman, el Explosivo"
+        },
+        {
+            "name": "Blop Dylan, el Ventoso"
+        },
+        {
+            "name": "Blop Inocho, el Narizotas"
+        },
+        {
+            "name": "Bloppy Reinarker, la Primera Mitad"
+        },
+        {
+            "name": "Bo'Callaghan, el Trébol"
+        },
+        {
+            "name": "Doomba, el Inimitable"
+        },
+        {
+            "name": "Buldamort, el Serpiente"
+        },
+        {
+            "name": "Bulbiftericia, la Amarillenta"
+        },
+        {
+            "name": "Bulbii, la Creadora"
+        },
+        {
+            "name": "Bulbubunet, la Única"
+        },
+        {
+            "name": "Bwarkgner, el Magnificentista"
+        },
+        {
+            "name": "Barchwork, el Multicolor"
+        },
+        {
+            "name": "Bwhork Mageneration, el Precursor"
+        },
+        {
+            "name": "Cabalista, el Conspirador"
+        },
+        {
+            "name": "Caballagami Pueryukazo, el Aburrido"
+        },
+        {
+            "name": "Calawino, el Oriental"
+        },
+        {
+            "name": "Cangri-doo, la Hadada"
+        },
+        {
+            "name": "Cañón Dorzuelo, el Doloroso"
+        },
+        {
+            "name": "Cascacreta, el Crujiente"
+        },
+        {
+            "name": "Cascalva, el Marino"
+        },
+        {
+            "name": "Cascariquita, el Alunarado"
+        },
+        {
+            "name": "Cascacripis, el Cerealista"
+        },
+        {
+            "name": "Cascokris, el Esbozado"
+        },
+        {
+            "name": "Cascadilo, el Mordiente"
+        },
+        {
+            "name": "Cascanenburg, el Espumoso"
+        },
+        {
+            "name": "Cascascivo, el Libidinoso"
+        },
+        {
+            "name": "Cascarnudo, el Engañado"
+        },
+        {
+            "name": "Cascabina, el Piloto"
+        },
+        {
+            "name": "Casccadilla, el Tramposo"
+        },
+        {
+            "name": "Cascaseosa, el Refrescante"
+        },
+        {
+            "name": "Cascaolla, el Exprés"
+        },
+        {
+            "name": "Cascaocado, el Mordido"
+        },
+        {
+            "name": "Cascablanco, el Inmaculado"
+        },
+        {
+            "name": "Cascarnivoro, el Voraz"
+        },
+        {
+            "name": "Cascaduro, el Sabio"
+        },
+        {
+            "name": "Cascocido, el Calcinado"
+        },
+        {
+            "name": "Cascoburio, el Maldito"
+        },
+        {
+            "name": "CasCoCrane-o, el Retorcido"
+        },
+        {
+            "name": "Cazafrán, el Colorante"
+        },
+        {
+            "name": "Cerduodenitis, el Abdominal"
+        },
+        {
+            "name": "Cháferlie, el Ángeles"
+        },
+        {
+            "name": "Chaferditos, los Tres"
+        },
+        {
+            "name": "Chafernan D'alonzo, el Nano"
+        },
+        {
+            "name": "Chafíner Divarrio, el Casposo"
+        },
+        {
+            "name": "Charfernegger, el Goberneitor"
+        },
+        {
+            "name": "Chagüer Langers, los Coloridos"
+        },
+        {
+            "name": "Chamadkasas, las Desesperadas"
+        },
+        {
+            "name": "Champacné, el Granitos"
+        },
+        {
+            "name": "Chalbis, el King"
+        },
+        {
+            "name": "Champi Casso, el Cúbico"
+        },
+        {
+            "name": "Champli, el Sonoro"
+        },
+        {
+            "name": "Champlomo, el Soldadito"
+        },
+        {
+            "name": "Champlin, el Cómico"
+        },
+        {
+            "name": "Champán, el Espumoso"
+        },
+        {
+            "name": "Champolís, el Astronauta"
+        },
+        {
+            "name": "Chavala Zotaina, la Castigadora"
+        },
+        {
+            "name": "Cochumájer, el Rápido"
+        },
+        {
+            "name": "Cocodranel, la Perfumada"
+        },
+        {
+            "name": "Codembolia, el Obstructor"
+        },
+        {
+            "name": "Colmillamoto, el Omnipotente"
+        },
+        {
+            "name": "Colmillazaqui, el Inagotable"
+        },
+        {
+            "name": "Cooligan, el Agresivo"
+        },
+        {
+            "name": "Cortazador, el Inconformista"
+        },
+        {
+            "name": "Crojmeo, el Veronés"
+        },
+        {
+            "name": "Crujlieta, la Veronesa"
+        },
+        {
+            "name": "Crujaitor, el Eurovisivo"
+        },
+        {
+            "name": "Crujidilo Dundee, el Australiano"
+        },
+        {
+            "name": "Crujíbaro, el Tzantza"
+        },
+        {
+            "name": "Crustoriyama, el Boludo"
+        },
+        {
+            "name": "Crustodralí, el Bigotudo"
+        },
+        {
+            "name": "Crustérix, el Viajante"
+        },
+        {
+            "name": "Crusthórpal, Passian el Submarino"
+        },
+        {
+            "name": "Cuergotismo, el Febril"
+        },
+        {
+            "name": "Culebretty, la Fea"
+        },
+        {
+            "name": "Diente de Lennon, el Universal"
+        },
+        {
+            "name": "Dientetris, el Inolvidable"
+        },
+        {
+            "name": "Diszápulo Delzoih, el Profeta"
+        },
+        {
+            "name": "DoK Ok, el Gasterópodo"
+        },
+        {
+            "name": "Dreggeatón, el Latino"
+        },
+        {
+            "name": "Drageagainst, el Máquina"
+        },
+        {
+            "name": "Drugmiente, la Bella"
+        },
+        {
+            "name": "Dragkuín, el Disfrazado"
+        },
+        {
+            "name": "Dragma, el Griego"
+        },
+        {
+            "name": "Dragstor, el de la Esquina"
+        },
+        {
+            "name": "Drakójak, el Piruletas"
+        },
+        {
+            "name": "Drajoanito, el Rojo"
+        },
+        {
+            "name": "Drajorgito, el Verde"
+        },
+        {
+            "name": "Drajoimito, el Azul"
+        },
+        {
+            "name": "Dreghouse, el Cínico"
+        },
+        {
+            "name": "Dragmocles, el Fatalista"
+        },
+        {
+            "name": "Draltóniko, el Ojo de Águila"
+        },
+        {
+            "name": "Drakaoly, la Violinista"
+        },
+        {
+            "name": "Dragozart Almandreus, el Prodigio"
+        },
+        {
+            "name": "Dragamenón, el Destructroyer"
+        },
+        {
+            "name": "Mafaldragosa, la Hermana pequeña"
+        },
+        {
+            "name": "Dragump, el Oscarizado"
+        },
+        {
+            "name": "Dragoss&Dungeoss, el Original"
+        },
+        {
+            "name": "Dragosstinho, el Futboleiro"
+        },
+        {
+            "name": "Dragoss To, el Caluroso"
+        },
+        {
+            "name": "Dragoss Pel, el Negro"
+        },
+        {
+            "name": "Dragore, el Sangriento"
+        },
+        {
+            "name": "Dragrogui, el Ebrio"
+        },
+        {
+            "name": "Ledrag, el Ognat"
+        },
+        {
+            "name": "Drakolakao, el Sabroso"
+        },
+        {
+            "name": "El Stronyjok, el Pajarillo"
+        },
+        {
+            "name": "Estarausija Azul, el del Danubio"
+        },
+        {
+            "name": "Escarumais, los Siete"
+        },
+        {
+            "name": "Escorobeitor, el Malvado"
+        },
+        {
+            "name": "Esjaraboja Verde, el Mentolado"
+        },
+        {
+            "name": "Escarálibur, la Legendaria"
+        },
+        {
+            "name": "Esquenosé, el Indeciso"
+        },
+        {
+            "name": "Fantasmarley, el Rastafari"
+        },
+        {
+            "name": "Fanthraks, el Acomplejado"
+        },
+        {
+            "name": "Fantasma Arepopins, la Niñera"
+        },
+        {
+            "name": "Fantaradona, el Mágico"
+        },
+        {
+            "name": "Fantasmarty, Mac Flyrefux el Futurista"
+        },
+        {
+            "name": "Fantarmantino, el Visceral"
+        },
+        {
+            "name": "Fantasmanson, el Familiar"
+        },
+        {
+            "name": "Fanturo Pandez-Revértulo, el Espadachín"
+        },
+        {
+            "name": "Fantasmonroe, el Deseo"
+        },
+        {
+            "name": "Fant-eagux, el Germano"
+        },
+        {
+            "name": "Fantasmator Soryonara, el Baby"
+        },
+        {
+            "name": "Fantasmeluze, la Gentil"
+        },
+        {
+            "name": "Fantasmily-Celly, la Madre"
+        },
+        {
+            "name": "Fredtásmer Tanukuín, el Chanpion"
+        },
+        {
+            "name": "Fantasmaik Táisunkui, San el Pegador"
+        },
+        {
+            "name": "Fantastle Vániante, el Matavampiros"
+        },
+        {
+            "name": "Fantazmania, el Diablo"
+        },
+        {
+            "name": "Florivera, el Muralista"
+        },
+        {
+            "name": "Pulgargrolito, el Astuto"
+        },
+        {
+            "name": "Gelatiris, el Arenero"
+        },
+        {
+            "name": "Gelatina Turner, la Best"
+        },
+        {
+            "name": "Gelazquina, el Men"
+        },
+        {
+            "name": "Gínsenk, el Estimulante"
+        },
+        {
+            "name": "Gearsol Metalvaje, el Espía"
+        },
+        {
+            "name": "Goyablín, el Afrancesado"
+        },
+        {
+            "name": "Guerred-Fish, el Cortés"
+        },
+        {
+            "name": "Guerreynor Zothia, la Superviviente"
+        },
+        {
+            "name": "Herranor, el Pizzaiolo"
+        },
+        {
+            "name": "Jabachlí, el Casto"
+        },
+        {
+            "name": "Jabulio de la Llanesias, el Portero"
+        },
+        {
+            "name": "Jalatintin, el Reportero"
+        },
+        {
+            "name": "Jalatintanic, el Hundido"
+        },
+        {
+            "name": "Jaleté, el Extraterrestre"
+        },
+        {
+            "name": "Jefe Cocolumbo, el Detective"
+        },
+        {
+            "name": "Jefe de Victoria Jarató, el Mancillado"
+        },
+        {
+            "name": "Kanábolo, el Rubio"
+        },
+        {
+            "name": "Klaidíbola Cerbarrow, la Otra Mitad"
+        },
+        {
+            "name": "Kanníbal, el Lector"
+        },
+        {
+            "name": "Kanibúlrich Lars, el Metálico"
+        },
+        {
+            "name": "Kánudalf, el Kanoso"
+        },
+        {
+            "name": "Kasrafantásol, el Parapsicólogo"
+        },
+        {
+            "name": "Kidoloroso, del Calmante"
+        },
+        {
+            "name": "Kílibrill vol.2, el Vengativo"
+        },
+        {
+            "name": "Kiravel, el Artesano"
+        },
+        {
+            "name": "Kitsa No, el Violento"
+        },
+        {
+            "name": "Kitsiús, el Estornudo"
+        },
+        {
+            "name": "Kitsean Cónere, el Agente Secreto"
+        },
+        {
+            "name": "Kitsu Positoyo, el Sanador"
+        },
+        {
+            "name": "Botalak Cabalgator, el Ingenioso"
+        },
+        {
+            "name": "Koalalia, el Mudo"
+        },
+        {
+            "name": "Koalúkyluk, el Solitario"
+        },
+        {
+            "name": "Koalugok, el Pato"
+        },
+        {
+            "name": "Koalako, el Pato"
+        },
+        {
+            "name": "Kokajín, el Calvo"
+        },
+        {
+            "name": "Koaluik, el Pato"
+        },
+        {
+            "name": "Koayak, el Destripador"
+        },
+        {
+            "name": "Koelloks, el Cerealista"
+        },
+        {
+            "name": "Sepaulturero Kleealak, el Arquitecto"
+        },
+        {
+            "name": "Kokotel, el Agitado"
+        },
+        {
+            "name": "Kolafuerte, el Pegatodo"
+        },
+        {
+            "name": "Kosakhiin, el Lunítico"
+        },
+        {
+            "name": "Kramelanoma, el Ennegrecedor"
+        },
+        {
+            "name": "Kwane, el Ciudadano"
+        },
+        {
+            "name": "El Strat, el Vampiro"
+        },
+        {
+            "name": "Larvichuelas Jack, las Mágicas"
+        },
+        {
+            "name": "Larvangoj, el Desorejado"
+        },
+        {
+            "name": "Larvémming, el Descerebrado"
+        },
+        {
+            "name": "Looparpel, el Dip"
+        },
+        {
+            "name": "Led Empling, el Ascensorista"
+        },
+        {
+            "name": "Lodontólogo, el Sonriente"
+        },
+        {
+            "name": "Maestrónomo, el Estrellado"
+        },
+        {
+            "name": "Maestro Peado, la Cuenta"
+        },
+        {
+            "name": "Maéstrick Vaggerpiro, el Canto Rodado"
+        },
+        {
+            "name": "Don Kizoth, el Obstinado"
+        },
+        {
+            "name": "Maho Firel-Tux, el Paciente"
+        },
+        {
+            "name": "Mamoon, el Grande"
+        },
+        {
+            "name": "Mandreinas, las Nueve"
+        },
+        {
+            "name": "Merkxguerrita, el Ogro"
+        },
+        {
+            "name": "Mazomorra, el Rolista"
+        },
+        {
+            "name": "Miluigi, el Fontanero"
+        },
+        {
+            "name": "Miliratatúi, el Gastrónomo"
+        },
+        {
+            "name": "Minerón, el Incendiario"
+        },
+        {
+            "name": "Mililupin, el Tercero"
+        },
+        {
+            "name": "Mitoskorleone, el Buen Padre"
+        },
+        {
+            "name": "Minocontavan Konm'astuzia, el Colorado"
+        },
+        {
+            "name": "Momíller Frának, el Umbrío"
+        },
+        {
+            "name": "Mospetero, el Triple"
+        },
+        {
+            "name": "Mashkira, la Rubia de Bote"
+        },
+        {
+            "name": "Munchfavard, el Gritador"
+        },
+        {
+            "name": "Nakúmbat, el Mortal"
+        },
+        {
+            "name": "Nelgibson, el Letal"
+        },
+        {
+            "name": "Nieruba, el Poeta"
+        },
+        {
+            "name": "Nipultay Dea, el Poco Inspirado"
+        },
+        {
+            "name": "Nozdoku, el Numérico"
+        },
+        {
+            "name": "Nujosawa, el Emperador"
+        },
+        {
+            "name": "Onicienta, la de Medianoche"
+        },
+        {
+            "name": "Osurce Kodes, el Problemático"
+        },
+        {
+            "name": "Palmiró, el Tetradimensional"
+        },
+        {
+            "name": "Palmiscor Pions, los Amantes"
+        },
+        {
+            "name": "Palmila, la Vigilante"
+        },
+        {
+            "name": "Palmifred Passteroh, el Bailarín"
+        },
+        {
+            "name": "Paelladero Oscuro, el Arrozoso"
+        },
+        {
+            "name": "Pandahl Borroaldcho, el Cuentacuentos"
+        },
+        {
+            "name": "Pandiánayons, el Aventurero"
+        },
+        {
+            "name": "Pandarwin, el Evolucionista"
+        },
+        {
+            "name": "Panpítar, el Niño"
+        },
+        {
+            "name": "Pan Dórrison, el Hosco"
+        },
+        {
+            "name": "Pángdulo, el Revienta-Bolas"
+        },
+        {
+            "name": "Pastortilla, el Huevo"
+        },
+        {
+            "name": "Pekekokoitu, el Interruptus"
+        },
+        {
+            "name": "Pekewasqhabit, el Juguetón"
+        },
+        {
+            "name": "Pekiwbyt Hambriento, el Glotón"
+        },
+        {
+            "name": "Peketchup, el Hamburguesero"
+        },
+        {
+            "name": "Piokacho, el Eléctrico"
+        },
+        {
+            "name": "Pioch, el Arenil"
+        },
+        {
+            "name": "Capioricito Rojo, el Forestal"
+        },
+        {
+            "name": "Pido, el Greñas"
+        },
+        {
+            "name": "Spionter Vellde, el Peligroso"
+        },
+        {
+            "name": "Spío, el Dragón"
+        },
+        {
+            "name": "Piralhaka, el Maorí"
+        },
+        {
+            "name": "Pischurrasco, el Braseado"
+        },
+        {
+            "name": "Pischili Conkarne, el Fuerte"
+        },
+        {
+            "name": "Pischistorra, la Cárnica"
+        },
+        {
+            "name": "Pischto, el Tomatoso"
+        },
+        {
+            "name": "Gazpischos, el Refrescante"
+        },
+        {
+            "name": "Pohozí, el Jorobado"
+        },
+        {
+            "name": "Prestrit, el Luchador"
+        },
+        {
+            "name": "Rafa de Alnadalillas, el Caníbal"
+        },
+        {
+            "name": "Ratokio de Alcontel, la Despeinada"
+        },
+        {
+            "name": "Ratila, el Huno"
+        },
+        {
+            "name": "Ratom Raider, la Curvas"
+        },
+        {
+            "name": "Raúl Cera, la Péptica"
+        },
+        {
+            "name": "Reyuna, el Dibujante"
+        },
+        {
+            "name": "Arib Abá, el de los 40"
+        },
+        {
+            "name": "Rochavo Democho, el Chispotiado"
+        },
+        {
+            "name": "Rostetricia, la Reproductiva"
+        },
+        {
+            "name": "Sargende Michael, el Narrador"
+        },
+        {
+            "name": "Scorbuthoveen, el Sordo"
+        },
+        {
+            "name": "Serpistol, el Afónico"
+        },
+        {
+            "name": "Setsa'n Desiti, la Amistosa"
+        },
+        {
+            "name": "Setal Slugdor, el Exterminador"
+        },
+        {
+            "name": "Siegálaher, los Chulos"
+        },
+        {
+            "name": "Sairyó Hrdanfux, el Volador"
+        },
+        {
+            "name": "Sparito, el Feo"
+        },
+        {
+            "name": "El Strópala Otravez, el Sam"
+        },
+        {
+            "name": "Sushij, el Makisan"
+        },
+        {
+            "name": "Satofu, el PlasticPaddy"
+        },
+        {
+            "name": "Tofumado, el Alucinado"
+        },
+        {
+            "name": "Tofumantxú, el Mítico"
+        },
+        {
+            "name": "Tortugríssom, el Doctor"
+        },
+        {
+            "name": "Tortugadget, el Inspector"
+        },
+        {
+            "name": "Tortugo Projatt, el Corto"
+        },
+        {
+            "name": "Tortruquini, el Inspector"
+        },
+        {
+            "name": "Trompsosis, el Cardiaco"
+        },
+        {
+            "name": "Trroncky III, el Tigre"
+        },
+        {
+            "name": "Troolbin, el de los Bolsquels"
+        },
+        {
+            "name": "Tufaldo Aréneo, el Marielito"
+        },
+        {
+            "name": "Tufóbico, el Miedoso"
+        },
+        {
+            "name": "Tofofo, el Blandito"
+        },
+        {
+            "name": "Uginukem, el Duque"
+        },
+        {
+            "name": "Vamorespirros, el Múltiple"
+        },
+        {
+            "name": "Wogew Wabbit, el Engañado"
+        },
+        {
+            "name": "Waybbit Esquelite, el Rebelde"
+        },
+        {
+            "name": "Wabibip Woyote, el Persistente"
+        },
+        {
+            "name": "Warkamole, el Apetitoso"
+        },
+        {
+            "name": "Warjamer, el Miniaturista"
+        },
+        {
+            "name": "Yocái Ipehkaíto, el Frito"
+        },
+        {
+            "name": "Zampatávoro, el Miliano"
+        }
+    ]
+}
