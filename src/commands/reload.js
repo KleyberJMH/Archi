@@ -1,11 +1,18 @@
 const { SlashCommandBuilder } = require('discord.js')
+const { ReloadType } = require('commandkit') 
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('Pong!'),
+    .setName('reload')
+    .setDescription('Reloads bot commands'),
     run: async ({ interaction, client, handler }) => {
-        interaction.reply('Pong!!')       
+        await interaction.deferReply()
+
+        await handler.reloadCommands()
+
+        interaction.followUp('Commands reloaded')
+
+        
     },
     options: {
         //cooldown: '1d',
