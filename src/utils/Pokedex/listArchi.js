@@ -15,14 +15,20 @@ module.exports = async (user, guild,) => {
         guildId: guild,
     }
 
+
     try {
         const pokedex = await Pokedex.findOne(query);
-        console.log(pokedex);
-        return pokedex.archiCollection
+        if (pokedex) {
+            console.log("aaaa")
+            console.log(pokedex.archiCollection)
+            return pokedex.archiCollection
+        } else {
+            console.log("bbbbb")
+        }
 
     } catch (error) {
-        console.log(`Error adding archi: ${error}`)
-    }
+        console.log(`Error listing archi: ${error}`)
+    } 
 
 
 }

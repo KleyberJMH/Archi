@@ -19,18 +19,9 @@ module.exports = async (user, guild, archi) => {
     try {
         const pokedex = await Pokedex.findOne(query);
         if (pokedex) {
-            pokedex.archiCollection.push(archi);
+            pokedex.archiCollection=pokedex.archiCollection.filter(a => a.name!=archi);
             await pokedex.save();
-        } else {
-            const newPokedex = new Pokedex({
-                userId: user,
-                guildId: guild,
-                archiCollection: archi,
-            })
-            await newPokedex.save();
-
-        }
-
+        } 
     } catch (error) {
         console.log(`Error adding archi: ${error}`)
     }

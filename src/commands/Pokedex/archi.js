@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, Client, Message } = require('discord.js');
+const { SlashCommandBuilder, Client, Message, ClientVoiceManager } = require('discord.js');
 const addArchi = require('../../utils/Pokedex/addArchi.js');
 const listArchi = require('../../utils/Pokedex/listArchi.js');
 const aList = require('../../Data/ArchisList.json');
@@ -20,7 +20,14 @@ module.exports = {
         .addSubcommand(subcommand =>
             subcommand
                 .setName('list')
-                .setDescription('Lists an Archie')),
+                .setDescription('Lists an Archie'))
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('remove')
+                .setDescription("Remove archi from collection"))
+                
+                .setAutocomplete(true),
+
 
     run: async ({ interaction, client, handler }) => {
 
@@ -31,21 +38,21 @@ module.exports = {
         }
         else if (interaction.options.getSubcommand() === 'list') {
             //Listing Collection
-            const aCol = listArchi(interaction.user.id, interaction.guildId)
+            const aCol = await listArchi(interaction.user.id, interaction.guildId)
+            console.log(`CoLLLL: ${aCol}`)
             if (!aCol) interaction.reply('No archis found, please add your first archi with /archi add');
             console.log(`Colection: ${aCol}`);
-            interaction.reply(aCol);
+            interaction.reply(`${aCol}`);
         }
 
 
     },
-    autocomplete: ({ interaction, client, handler }) => {
+
+
+    //Filtering and whitlisting of archi names
+    autocomplete: async ({ interaction, client, handler }) => {
         const focusedOption = interaction.options.getFocused(true).value;
-        // console.log(aList.archis)
-        console.log(focusedOption)
         const filteredChoices = aList.archis.filter(archi => archi.name.toLowerCase().includes(focusedOption.toLowerCase()));
-        console.log(`filtered: ${filteredChoices}`)
-        //interaction.respond(filteredChoices.slice(0,10))
         const results = filteredChoices.map((archi) => {
             return {
                 name: `${archi.name}`,
@@ -56,7 +63,7 @@ module.exports = {
     },
     options: {
         //cooldown: '1d',
-        devOnly: true,
+        //devOnly: true,
         //userPermissions:['Administrator'],
         //botPermissions:['BanMembers'],
         //deleted: true,
