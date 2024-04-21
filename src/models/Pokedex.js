@@ -1,3 +1,4 @@
+const archiSch = require('./ArchiSch.js').Schema
 const {Schema, model } = require('mongoose');
 const pokedexSchema= new Schema({
     userId:{
@@ -9,8 +10,16 @@ const pokedexSchema= new Schema({
         required: true
     },
     archiCollection:{
-        type:Array,
-        default:''
+        type:[archiSch],
+        
+    },
+    userDisplayName:{
+        type: String,
+        default:""
+    },
+    guildDisplayName:{
+        type: String,
+        default:""
     }
 });
 module.exports = model('Pokedex',pokedexSchema)

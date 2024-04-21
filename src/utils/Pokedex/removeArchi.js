@@ -19,9 +19,19 @@ module.exports = async (user, guild, archi) => {
     try {
         const pokedex = await Pokedex.findOne(query);
         if (pokedex) {
-            pokedex.archiCollection=pokedex.archiCollection.filter(a => a.name!=archi);
-            await pokedex.save();
+            const col=pokedex.archiCollection
+            const index= col.findIndex((entry) => entry.Name == archi.Name)
+            if (index==-1) return undefined
+            col[index].Amount--;
+            if(col[index].Amount<1){
+                col.splice(index,1);
+            }
+            await Pokedex.updateOne(query,{archiCollection: col})
+
+
+
         } 
+
     } catch (error) {
         console.log(`Error adding archi: ${error}`)
     }
