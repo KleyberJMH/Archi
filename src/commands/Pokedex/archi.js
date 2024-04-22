@@ -37,13 +37,13 @@ module.exports = {
             subcommand
                 .setName('repeated')
                 .setDescription('Shows your repeatead archis')),
-                
+
     run: async ({ interaction, client, handler }) => {
 
         if (interaction.options.getSubcommand() === 'add') {
             //Adding a new archi to the colection
             addArchi(interaction.user, interaction.guild, new ArchiSch({ Name: interaction.options.getString('name') }))
-            interaction.reply('Added')
+            interaction.reply({content:'Added', ephemeral: true} )
         }
         else if (interaction.options.getSubcommand() === 'list') {
             //Listing Collection
@@ -53,9 +53,9 @@ module.exports = {
                 aCol.forEach((archi) => {
                     reply += `${archi.Amount}x ${archi.Name}` + '\n';
                 })
-                interaction.reply(reply);
+                interaction.reply({content:reply, ephemeral: false} );
             }
-            else interaction.reply('No archis found, please add your first archi with /archi add');
+            else interaction.reply({content:'No archis found, please add your first archi with /archi add', ephemeral: true} );
 
         }
         else if (interaction.options.getSubcommand() === 'repeated') {
@@ -66,15 +66,16 @@ module.exports = {
                 aCol.forEach((archi) => {
                     if(archi.Amount>1)reply += `${archi.Amount}x ${archi.Name}` + '\n';
                 })
-                if (reply=="") interaction.reply('No duplicated archis found')
-                else interaction.reply(reply);
+                if (reply=="") interaction.reply({content:'No duplicated archis found', ephemeral: true})
+                else interaction.reply({content:reply, ephemeral: false });
             }
-            else interaction.reply('No archis found, please add your first archi with /archi add');
+            else interaction.reply({content:'No archis found, please add your first archi with /archi add', ephemeral: true});
 
         }
         else if (interaction.options.getSubcommand() === 'remove') {
-            removeArchi(interaction.user, interaction.guild, new ArchiSch({ Name: interaction.options.getString('name') }))
-            interaction.reply('Work in progress')
+            const res=removeArchi(interaction.user, interaction.guild, new ArchiSch({ Name: interaction.options.getString('name') }))
+            if (res==undefined) interaction.reply({content:'Archi not found in collection or collection does not exist', ephemeral: true})
+            else interaction.reply({content:'Eliminado', ephemeral: true});
         }
 
     },

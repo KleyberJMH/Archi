@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, Client, Message } = require('discord.js');
 const Pokedex = require('../../models/Pokedex');
-const ArchiSch = require('../../models/ArchiSch');
 
 /**
  * 
