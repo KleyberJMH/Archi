@@ -1,7 +1,9 @@
 const { SlashCommandBuilder, Client, Message, ClientVoiceManager } = require('discord.js');
 const addArchi = require('../../utils/Pokedex/addArchi.js');
 const listArchi = require('../../utils/Pokedex/listArchi.js');
+const removeArchi = require('../../utils/Pokedex/removeArchi');
 const aList = require('../../Data/ArchisList.json');
+const ArchiSch = require('../../models/ArchiSch.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,7 +16,17 @@ module.exports = {
                 .addStringOption(option =>
                     option
                         .setName('name')
-                        .setDescription('Nombre de el archi en fomrato "El Loquesea" (sin comillas)')
+                        .setDescription('Nombre de el archi')
+                        .setAutocomplete(true)
+                        .setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('remove')
+                .setDescription("Remove archi from collection")
+                .addStringOption(option =>
+                    option
+                        .setName('name')
+                        .setDescription('Nombre de el archi')
                         .setAutocomplete(true)
                         .setRequired(true)))
         .addSubcommand(subcommand =>
@@ -23,28 +35,48 @@ module.exports = {
                 .setDescription('Lists an Archie'))
         .addSubcommand(subcommand =>
             subcommand
-                .setName('remove')
-                .setDescription("Remove archi from collection"))
-                
-                .setAutocomplete(true),
-
+                .setName('repeated')
+                .setDescription('Shows your repeatead archis')),
 
     run: async ({ interaction, client, handler }) => {
 
         if (interaction.options.getSubcommand() === 'add') {
             //Adding a new archi to the colection
-            addArchi(interaction.user.id, interaction.guildId, interaction.options.getString('name'))
-            interaction.reply('Added')
+            addArchi(interaction.user, interaction.guild, new ArchiSch({ Name: interaction.options.getString('name') }))
+            interaction.reply({content:'Added', ephemeral: true} )
         }
         else if (interaction.options.getSubcommand() === 'list') {
             //Listing Collection
             const aCol = await listArchi(interaction.user.id, interaction.guildId)
-            console.log(`CoLLLL: ${aCol}`)
-            if (!aCol) interaction.reply('No archis found, please add your first archi with /archi add');
-            console.log(`Colection: ${aCol}`);
-            interaction.reply(`${aCol}`);
-        }
+            if (aCol) {
+                var reply = ""
+                aCol.forEach((archi) => {
+                    reply += `${archi.Amount}x ${archi.Name}` + '\n';
+                })
+                interaction.reply({content:reply, ephemeral: false} );
+            }
+            else interaction.reply({content:'No archis found, please add your first archi with /archi add', ephemeral: true} );
 
+        }
+        else if (interaction.options.getSubcommand() === 'repeated') {
+            //Listing Collection
+            const aCol = await listArchi(interaction.user.id, interaction.guildId)
+            if (aCol) {
+                var reply = ""
+                aCol.forEach((archi) => {
+                    if(archi.Amount>1)reply += `${archi.Amount}x ${archi.Name}` + '\n';
+                })
+                if (reply=="") interaction.reply({content:'No duplicated archis found', ephemeral: true})
+                else interaction.reply({content:reply, ephemeral: false });
+            }
+            else interaction.reply({content:'No archis found, please add your first archi with /archi add', ephemeral: true});
+
+        }
+        else if (interaction.options.getSubcommand() === 'remove') {
+            const res=removeArchi(interaction.user, interaction.guild, new ArchiSch({ Name: interaction.options.getString('name') }))
+            if (res==undefined) interaction.reply({content:'Archi not found in collection or collection does not exist', ephemeral: true})
+            else interaction.reply({content:'Eliminado', ephemeral: true});
+        }
 
     },
 

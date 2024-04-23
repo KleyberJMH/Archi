@@ -19,11 +19,11 @@ module.exports = async (user, guild,) => {
     try {
         const pokedex = await Pokedex.findOne(query);
         if (pokedex) {
-            console.log("aaaa")
-            console.log(pokedex.archiCollection)
+            //console.log(pokedex.archiCollection)
             return pokedex.archiCollection
         } else {
-            console.log("bbbbb")
+            console.log(`no collection found for ${user.name}`)
+            return undefined
         }
 
     } catch (error) {

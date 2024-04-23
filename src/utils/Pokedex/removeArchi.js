@@ -11,19 +11,36 @@ const Pokedex = require('../../models/Pokedex');
 module.exports = async (user, guild, archi) => {
 
     const query = {
-        userId: user,
-        guildId: guild,
+        userId: user.id,
+        guildId: guild.id,
     }
 
-
+console.log("Empezado borrado de "+archi.Name);
     try {
+        console.log("a");
         const pokedex = await Pokedex.findOne(query);
+        console.log(pokedex);
         if (pokedex) {
-            pokedex.archiCollection=pokedex.archiCollection.filter(a => a.name!=archi);
-            await pokedex.save();
+            console.log("hay pokedex");
+            const col=pokedex.archiCollection
+            const index= col.findIndex((entry) => entry.Name == archi.Name)
+            console.log("index: "+index);
+            if (index==-1) return undefined
+            col[index].Amount--;
+            console.log("amount: "+col[index].Amount);
+            if(col[index].Amount<1){
+                col.splice(index,1);
+            }
+            const ret= await Pokedex.updateOne(query,{archiCollection: col})
+            return ret
         } 
+        else{
+            console.log("no hay pokedex");
+            return undefined
+        }
+
     } catch (error) {
-        console.log(`Error adding archi: ${error}`)
+        console.log(`Error removing archi: ${error}`)
     }
 
 
