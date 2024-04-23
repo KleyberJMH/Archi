@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, Client, Message, ClientVoiceManager } = require('discord.js');
 const addArchi = require('../../utils/Pokedex/addArchi.js');
 const listArchi = require('../../utils/Pokedex/listArchi.js');
-const removeArchi = require('../../utils/Pokedex/removeArchi');
+const removeArchi = require('../../utils/Pokedex/removeArchi.js');
 const aList = require('../../Data/ArchisList.json');
 const ArchiSch = require('../../models/ArchiSch.js')
 
@@ -95,7 +95,7 @@ module.exports = {
     },
     options: {
         //cooldown: '1d',
-        //devOnly: true,
+        devOnly: true,
         //userPermissions:['Administrator'],
         //botPermissions:['BanMembers'],
         //deleted: true,

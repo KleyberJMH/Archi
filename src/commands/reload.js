@@ -10,7 +10,7 @@ module.exports = {
 
         await handler.reloadCommands()
 
-        interaction.followUp('Commands reloaded')
+        interaction.followUp({content:'Commands reloaded', ephemeral: true})
 
         
     },
