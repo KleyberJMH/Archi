@@ -8,6 +8,10 @@ const eventDungSchema= new Schema({
         type: String,
         required: true
     },
+    Descripcion:{
+        type:String,
+        default:'',
+    },
     DungName:{
         type: String,
         required: true
@@ -32,6 +36,19 @@ const eventDungSchema= new Schema({
     eventID:{
         type:String,
         required:true
+    },
+    achievements:{
+        type:Boolean,
+        default:false
+    },
+    keyGiven:{
+        type:Boolean,
+        default:false
+    },
+    strictDate:{
+        type:Boolean,
+        default:false
     }
+    
 })
 module.exports = model('eventDung',eventDungSchema)
