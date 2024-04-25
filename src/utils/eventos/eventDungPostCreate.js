@@ -1,4 +1,4 @@
-const { Client, Message, ActionRowBuilder, EmbedBuilder, Embed } = require("discord.js");
+const { Client, Message, ActionRowBuilder, EmbedBuilder, Embed, ButtonBuilder, ButtonStyle } = require("discord.js");
 const EventDungSch = require('../../models/eventos/eventDungSch');
 const eventDungPostMsgCreate = require("./eventDungPostMsgCreate");
 const dList = require('../../Data/DungList.json');
@@ -22,7 +22,7 @@ module.exports = async (client, dungeonEvt) => {
         message: {
             embeds: [createMsg(dungeonEvt)],
             autoArchiveDuration: 60,
-            reason: 'test',
+            components:[createButtons(dungeonEvt)]
         }
     });
     console.log('c');
@@ -34,12 +34,12 @@ module.exports = async (client, dungeonEvt) => {
 }
 
 /**
- * 
  * @param {Client} client 
  * @param {EventDungSch} dungeonEvt 
  * @returns {Embed}
  */
 function createMsg(dungeonEvt) {
+    //get img urlg
     var iUrl = ""
     for (const dung of dList.dungs) {
 
@@ -47,39 +47,50 @@ function createMsg(dungeonEvt) {
             iUrl = dung.imgUrl ?? ""
             break;
         }
-        else console.log("ifauk");
     }
-    const url = dList.dungs.filter(dung => {
 
-        dung.dungName.toLowerCase() == dungeonEvt.DungName.toLowerCase()
-
-    })
     const boolsLiteral = `Achivements are ${dungeonEvt.achievements ? '' : 'NOT'} the focus
     The key is ${dungeonEvt.keyGiven ? '' : 'NOT'} given
     The date is ${dungeonEvt.strictDate?'':'NOT'} strict`
 
-    const peopleLiteral=`Minmum amount of people required: ${dungeonEvt.MinPeople}
-    Maximum amount of people aloud: ${dungeonEvt.MaxPeople}`
+    const peopleLiteral=`Minmum people: ${dungeonEvt.MinPeople}
+    Maximum people: ${dungeonEvt.MaxPeople}`
 
     const exampleEmbed = new EmbedBuilder()
         .setColor(0x0099FF)
         .setTitle(dungeonEvt.DungName ?? 'missing tittle')
         .setDescription(dungeonEvt.Description ?? "no desc")
         .setThumbnail(iUrl)
-        .addFields({ name: new Date(dungeonEvt.eventDate).toDateString(), value: new Date(dungeonEvt.eventDate).toTimeString() })
+        .setImage(iUrl)
         .addFields(
+            { name: new Date(dungeonEvt.eventDate).toDateString(), value: new Date(dungeonEvt.eventDate).toTimeString() },
             { name: `Desired people: ${dungeonEvt.DesiredPeople}`, value: peopleLiteral },
             { name: '\u200B', value: '\u200B' },
+            { name: 'TEST NAME ', value: boolsLiteral, inline: false },
             { name: '🏆', value: dungeonEvt.achievements ? '✔️' : '❌', inline: true },
             { name: '🔑', value: dungeonEvt.keyGiven ? '✔️' : '❌', inline: true },
             { name: '📅', value: dungeonEvt.strictDate ? '✔️' : '❌', inline: true },
-            { name: ' ', value: boolsLiteral, inline: false },
 
         )
-
-
-        .setImage(iUrl)
         .setTimestamp()
         .setFooter({ text: `ID: ${dungeonEvt.eventID}`});
     return exampleEmbed
+}
+/**
+ * 
+ * @param {EventDungSch} dungeonEvt 
+ * @returns {ActionRowBuilder}
+ */
+function createButtons(dungeonEvt){
+    const joinBtn = new ButtonBuilder()
+    .setCustomId('Event*join*'+dungeonEvt.eventID)
+    .setLabel('Join')
+    .setStyle(ButtonStyle.Success);
+    const leaveBtn = new ButtonBuilder()
+    .setCustomId('Leave')
+    .setLabel('Leave')
+    .setStyle(ButtonStyle.Danger);
+
+    return new ActionRowBuilder().setComponents([joinBtn,leaveBtn])
+
 }

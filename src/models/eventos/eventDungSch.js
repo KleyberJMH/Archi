@@ -1,4 +1,6 @@
 const {Schema, model} = require('mongoose');
+const participantSchema=require('./participantSch').Schema
+
 const eventDungSchema= new Schema({
     AuthorID:{
         type: String,
@@ -8,7 +10,7 @@ const eventDungSchema= new Schema({
         type: String,
         required: true
     },
-    Descripcion:{
+    Description:{
         type:String,
         default:'',
     },
@@ -48,7 +50,12 @@ const eventDungSchema= new Schema({
     strictDate:{
         type:Boolean,
         default:false
+    },
+    participants:{
+        type:[participantSchema],
+        default:[]
     }
     
 })
+
 module.exports = model('eventDung',eventDungSchema)

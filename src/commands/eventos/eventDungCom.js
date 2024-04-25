@@ -57,9 +57,10 @@ module.exports = {
             evID = evID + `${interaction.user.id.slice(-4)}`
             evID = evID + `${interaction.guildId.slice(-4)}`
             evID = evID + `${interaction.options.getString('date')}`
-            evID = evID + `${getRandomInt(999,10000)}`
+            evID = evID + `${getRandomInt(999, 10000)}`
             evID = evID.toLowerCase().replace(/\D/g, '') ?? '1d'
-
+            const dateStr = interaction.options.getString('date')
+            const date = /\d+[h|min|d]/g.test(dateStr) ? getRelativeDate(dateStr) : Date.fromString(dateStr);
             const newEvent = new eventDungSchema({
                 AuthorID: interaction.user.id,
                 GuildID: interaction.guildId,
@@ -68,7 +69,7 @@ module.exports = {
                 MaxPeople: interaction.options.getInteger('max') ?? 4,
                 MinPeople: interaction.options.getInteger('min') ?? 1,
                 Description: interaction.options.getString('description') ?? "no desc",
-                eventDate: Date.fromString(interaction.options.getString('date')),  //TODO: Implement actual Date obj creation   ??
+                eventDate: date,  //TODO: Implement actual Date obj creation   ??
                 eventID: evID
             })
             eventDungCreate(newEvent)
@@ -94,5 +95,30 @@ module.exports = {
 
 function getRandomInt(min, max) {
     return Math.random() * (max - min) + min;
-  }
-  
+}
+/**
+ * 
+ * @param {String} dateStr 
+ * @returns {Date}
+ */
+function getRelativeDate(dateStr) {
+    const date = new Date()
+    const regEx = /(\d+)([h|min|d])/
+    const result = regEx.exec(dateStr);
+    const amount = result[1];
+    const magnitude = result[2];
+    switch (magnitude) {
+        case 'd':
+            date.setTime( date.getTime()+amount*24*60*60*1000 )
+            break;
+        case 'h':
+            date.setHours(date.getHours() + amount)
+            break;
+        case 'min':
+            date.getMinutes(date.getMinutes() + amount)
+            break;
+        default:
+            break;
+    }
+    return date;
+}
