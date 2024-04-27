@@ -1,5 +1,5 @@
 {
-  "name": "beyce",
+  "name": "archi",
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
@@ -10,7 +10,6 @@
     "commandkit": "^0.1.10",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
-    "mongodb": "^6.5.0",
     "mongoose": "^8.3.2"
   }
 }
