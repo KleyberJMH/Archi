@@ -83,11 +83,11 @@ function createMsg(dungeonEvt) {
  */
 function createButtons(dungeonEvt){
     const joinBtn = new ButtonBuilder()
-    .setCustomId('Event*join*'+dungeonEvt.eventID)
+    .setCustomId('DungEvent*join*'+dungeonEvt.eventID)
     .setLabel('Join')
     .setStyle(ButtonStyle.Success);
     const leaveBtn = new ButtonBuilder()
-    .setCustomId('Leave')
+    .setCustomId('DungEvent*leave*'+dungeonEvt.eventID)
     .setLabel('Leave')
     .setStyle(ButtonStyle.Danger);
 

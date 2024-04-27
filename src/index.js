@@ -15,7 +15,7 @@ const client = new Client({
 new CommandKit({
     client,
     devGuildIds: ['1122901721044242532'],
-    devUserIds: ['235916525943521290', '164471239606272000'],
+    devUserIds: ['235916525943521290', '164471239606272000', '721065764114923661'],
     eventsPath: `${__dirname}/events`,
     commandsPath: `${__dirname}/commands`,
     bulkRegister: true,

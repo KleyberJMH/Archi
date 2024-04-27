@@ -69,7 +69,7 @@ module.exports = {
                 MaxPeople: interaction.options.getInteger('max') ?? 4,
                 MinPeople: interaction.options.getInteger('min') ?? 1,
                 Description: interaction.options.getString('description') ?? "no desc",
-                eventDate: date,  //TODO: Implement actual Date obj creation   ??
+                eventDate: date,  
                 eventID: evID
             })
             eventDungCreate(newEvent)
@@ -107,6 +107,7 @@ function getRelativeDate(dateStr) {
     const result = regEx.exec(dateStr);
     const amount = result[1];
     const magnitude = result[2];
+    console.log(`Amount: ${amount}, magnitude:${magnitude}`);
     switch (magnitude) {
         case 'd':
             date.setTime( date.getTime()+amount*24*60*60*1000 )
