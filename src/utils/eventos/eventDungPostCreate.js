@@ -1,36 +1,28 @@
-const { Client, Message, ActionRowBuilder, EmbedBuilder, Embed, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { Client, ThreadChannel, ActionRowBuilder, EmbedBuilder, Embed, ButtonBuilder, ButtonStyle, ForumChannel, Channel } = require("discord.js");
 const EventDungSch = require('../../models/eventos/eventDungSch');
-const eventDungPostMsgCreate = require("./eventDungPostMsgCreate");
 const dList = require('../../Data/DungList.json');
+const eventDungPostPartiEmbedCreate = require("./eventDungPostPartiEmbedCreate");
 
 /**
  * 
  * @param {Client} client 
- * @param {Message} message 
  * @param {EventDungSch} dungeonEvt
+ * @returns {ThreadChannel}
  */
 
 module.exports = async (client, dungeonEvt) => {
-    // try {
-    console.log('a');
+    /** @type {ForumChannel}*/
     const board = await client.channels.fetch('1232395814291378258'); //TODO Set up config file
-    console.log(board);
-    console.log("threads: ");
-    console.log(board.threads);
     const thread = await board.threads.create({
         name: dungeonEvt.DungName,
         message: {
-            embeds: [createMsg(dungeonEvt)],
-            autoArchiveDuration: 60,
-            components:[createButtons(dungeonEvt)]
+            embeds: [createInfoEmbed(dungeonEvt), eventDungPostPartiEmbedCreate(dungeonEvt.participants)],
+            components: [createButtons(dungeonEvt)],
+            autoArchiveDuration: 60
         }
     });
-    console.log('c');
     console.log(`Created thread: ${thread.name}`);
-
-    //   } catch (error) {
-    //     console.log("error saving dungeon:\n" + error);
-    //  }
+    return thread;
 }
 
 /**
@@ -38,25 +30,18 @@ module.exports = async (client, dungeonEvt) => {
  * @param {EventDungSch} dungeonEvt 
  * @returns {Embed}
  */
-function createMsg(dungeonEvt) {
+function createInfoEmbed(dungeonEvt) {
     //get img urlg
-    var iUrl = ""
-    for (const dung of dList.dungs) {
-
-        if (dung.dungName.toLowerCase() == dungeonEvt.DungName.toLowerCase()) {
-            iUrl = dung.imgUrl ?? ""
-            break;
-        }
-    }
-
+    const iUrl =dList.dungs.find(d => d.dungName.toLowerCase()== dungeonEvt.DungName.toLowerCase()).imgUrl??""
+    
     const boolsLiteral = `Achivements are ${dungeonEvt.achievements ? '' : 'NOT'} the focus
     The key is ${dungeonEvt.keyGiven ? '' : 'NOT'} given
-    The date is ${dungeonEvt.strictDate?'':'NOT'} strict`
+    The date is ${dungeonEvt.strictDate ? '' : 'NOT'} strict`
 
-    const peopleLiteral=`Minmum people: ${dungeonEvt.MinPeople}
+    const peopleLiteral = `Minmum people: ${dungeonEvt.MinPeople}
     Maximum people: ${dungeonEvt.MaxPeople}`
 
-    const exampleEmbed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
         .setColor(0x0099FF)
         .setTitle(dungeonEvt.DungName ?? 'missing tittle')
         .setDescription(dungeonEvt.Description ?? "no desc")
@@ -73,24 +58,25 @@ function createMsg(dungeonEvt) {
 
         )
         .setTimestamp()
-        .setFooter({ text: `ID: ${dungeonEvt.eventID}`});
-    return exampleEmbed
+        .setFooter({ text: `ID: ${dungeonEvt.eventID}` });
+    return embed
 }
+
 /**
  * 
  * @param {EventDungSch} dungeonEvt 
  * @returns {ActionRowBuilder}
  */
-function createButtons(dungeonEvt){
+function createButtons(dungeonEvt) {
     const joinBtn = new ButtonBuilder()
-    .setCustomId('DungEvent*join*'+dungeonEvt.eventID)
-    .setLabel('Join')
-    .setStyle(ButtonStyle.Success);
+        .setCustomId('DungEvent*join*' + dungeonEvt.eventID)
+        .setLabel('Join')
+        .setStyle(ButtonStyle.Success);
     const leaveBtn = new ButtonBuilder()
-    .setCustomId('DungEvent*leave*'+dungeonEvt.eventID)
-    .setLabel('Leave')
-    .setStyle(ButtonStyle.Danger);
+        .setCustomId('DungEvent*leave*' + dungeonEvt.eventID)
+        .setLabel('Leave')
+        .setStyle(ButtonStyle.Danger);
 
-    return new ActionRowBuilder().setComponents([joinBtn,leaveBtn])
+    return new ActionRowBuilder().setComponents([joinBtn, leaveBtn])
 
 }

@@ -72,8 +72,10 @@ module.exports = {
                 eventDate: date,  
                 eventID: evID
             })
+            const post=await eventDungPostCreate(client, newEvent)
+            newEvent.postId=post.id;
+            console.log("post id:" + post.id);
             eventDungCreate(newEvent)
-            eventDungPostCreate(client, newEvent)
             interaction.reply({ content: 'Added', ephemeral: true })
         }
     },

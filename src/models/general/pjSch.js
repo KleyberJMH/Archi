@@ -1,25 +1,22 @@
-const {Schema, model} = require('mongoose');
-//const pjClasses=require('../../Data/General.json').Classes.map(i=>i['name'])
-
+const { Schema, model } = require('mongoose');
+const professionSch = require('./professionSch');
 const pjSchema = new Schema({
-    GuildId:{
-        type:String,
-        required:true
+    PJName: {
+        type: String,
+        default: ""
     },
-    UserId:{
-        type:String,
+    PjClass: {
+        type: String,
+    },
+    PjLvl: {
+        type: Number,
         required: true
     },
-    PJName:{
-        type:String,
-        default:""
+    Professions:{
+        type:[professionSch.schema]
     },
-    PjClass:{
-        type:String,
-    },
-    PjLvl:{
-        type:Number,
-        required:true
+    urlId: {
+        type: String,
     }
 })
-module.exports = model('pj',pjSchema)
+module.exports = model('pj', pjSchema)

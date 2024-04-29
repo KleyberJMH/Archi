@@ -1,4 +1,3 @@
-const { ZenRows } = require("zenrows");
 const pjSch = require('../../models/general/pjSch')
 const Humanoid = require("humanoid-js");
 const cheerio = require('cheerio');
@@ -13,18 +12,20 @@ module.exports = async (characterName) => {
 
     try {
         const humanoid = new Humanoid();
-        const val = await humanoid.get(url).then()
+        const val = await humanoid.get(url)
         const $ = cheerio.load(val.body);
         const $sel = $('tr.ak-bg-odd td')
         const pjname=$sel[1].children[0].children[0].data;
+        const pjUrlId=$sel[1].children[0].attribs['href'].split('/').slice(-1)[0];
         const pjclass=$sel[2].children[0].children[0].data;
         const level=$sel[3].children[0].data
         const newPJSch = new pjSch({
             PJName:pjname,
             PjClass:pjclass,
-            PjLvl:level
+            PjLvl:level,
+            urlId:pjUrlId
         })
-        console.log(newPJSch);
+        console.log(JSON.stringify(newPJSch));
         return newPJSch
     } catch (error) {
         console.error(error);

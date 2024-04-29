@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const participantSchema = require('../general/pjSch').Schema
+const participantSchema = require('../general/pjSch')
 
 const eventDungSchema = new Schema({
     AuthorID: {
@@ -56,19 +56,23 @@ const eventDungSchema = new Schema({
         default: false
     },
     participants: {
-        type: [participantSchema],
+        type: [participantSchema.schema],
         default: []
+    },
+    postId:{
+        type:String
     }
 })
 /**
  * 
  * @param {participantSchema} participant 
- * @returns {Integer}
+ * @returns {Integer} -1: already there, -2 other error
 */
 eventDungSchema.methods.addParticipant = function (participant) {
     console.log(participant);
     console.log(this.participants);
-    if (participant==null|this.participants.includes(participant)) return -1
+        
+    if (participant==null|this.participants.findIndex(p=>p.PJName===participant.PJName)!=-1) return -1
     try {
         this.participants.push(participant);
         this.participantAmount = this.participants.length
@@ -79,6 +83,31 @@ eventDungSchema.methods.addParticipant = function (participant) {
         return -1
     }
 }
+/**
+ * 
+ * @param {participantSchema} participant 
+ * @returns {Integer} -1: not there, -2 other error
+*/
+eventDungSchema.methods.removeParticipant = function (participant) {
+    console.log(participant);
+    console.log(this.participants);
+    /**@type {[participantSchema]} */
+    const participants=this.participants;
+    
+    if (participant==null) return -2
+    const index= participants.findIndex(p=>p.PJName===participant.PJName)
+    if (index==-1) return -1
+    try {
+        this.participants.splice(index,1);
+        this.participantAmount = this.participants.length
+        return this.participantAmount;
+    }
+    catch (error) {
+        console.log("Error ading participant:\n" + error);
+        return -2
+    }
+}
+
 
 
 
