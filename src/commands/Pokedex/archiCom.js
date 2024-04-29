@@ -95,7 +95,7 @@ module.exports = {
     },
     options: {
         //cooldown: '1d',
-        devOnly: true,
+        devOnly: false,
         //userPermissions:['Administrator'],
         //botPermissions:['BanMembers'],
         //deleted: true,

@@ -1,7 +1,9 @@
 const { ButtonBuilder, ButtonStyle, SlashCommandBuilder, Client, Message, ClientVoiceManager } = require('discord.js');
+require('any-date-parser');
 const eventDungSchema = require('../../models/eventos/eventDungSch');
 const dList = require('../../Data/DungList.json');
 const eventDungCreate = require('../../utils/eventos/eventDungCreate');
+const eventDungPostCreate = require('../../utils/eventos/eventDungPostCreate');
 
 
 
@@ -32,6 +34,11 @@ module.exports = {
                         .setDescription("Desired number of people")
                         .setRequired(true)
                 )
+                .addStringOption(option =>
+                    option
+                        .setName("description")
+                        .setDescription("Optional aditional information")
+                )
                 .addIntegerOption(option =>
                     option
                         .setName("min")
@@ -42,10 +49,18 @@ module.exports = {
                         .setName("max")
                         .setDescription("Maximum number of people (default 4)")
                 )
-        ),   
+        ),
     run: async ({ interaction, client, handler }) => {
 
         if (interaction.options.getSubcommand() === 'create') {
+            var evID = ""
+            evID = evID + `${interaction.user.id.slice(-4)}`
+            evID = evID + `${interaction.guildId.slice(-4)}`
+            evID = evID + `${interaction.options.getString('date')}`
+            evID = evID + `${getRandomInt(999, 10000)}`
+            evID = evID.toLowerCase().replace(/\D/g, '') ?? '1d'
+            const dateStr = interaction.options.getString('date')
+            const date = /\d+[h|min|d]/g.test(dateStr) ? getRelativeDate(dateStr) : Date.fromString(dateStr);
             const newEvent = new eventDungSchema({
                 AuthorID: interaction.user.id,
                 GuildID: interaction.guildId,
@@ -53,10 +68,13 @@ module.exports = {
                 DesiredPeople: interaction.options.getInteger('desired'),
                 MaxPeople: interaction.options.getInteger('max') ?? 4,
                 MinPeople: interaction.options.getInteger('min') ?? 1,
-                eventDate: new Date().toString(),  //TODO: Implement actual Date obj creation  interaction.options.getString('date') ??
-                eventID:`${interaction.user.id}${interaction.guildId}${interaction.options.getString('dungeon')}${interaction.options.getString('date') ??'1d'}`
-
+                Description: interaction.options.getString('description') ?? "no desc",
+                eventDate: date,  
+                eventID: evID
             })
+            const post=await eventDungPostCreate(client, newEvent)
+            newEvent.postId=post.id;
+            console.log("post id:" + post.id);
             eventDungCreate(newEvent)
             interaction.reply({ content: 'Added', ephemeral: true })
         }
@@ -72,7 +90,38 @@ module.exports = {
         });
         interaction.respond(results.slice(0, 25));
     },
-    options:{
-        
+    options: {
+
     }
+}
+
+function getRandomInt(min, max) {
+    return Math.random() * (max - min) + min;
+}
+/**
+ * 
+ * @param {String} dateStr 
+ * @returns {Date}
+ */
+function getRelativeDate(dateStr) {
+    const date = new Date()
+    const regEx = /(\d+)([h|min|d])/
+    const result = regEx.exec(dateStr);
+    const amount = result[1];
+    const magnitude = result[2];
+    console.log(`Amount: ${amount}, magnitude:${magnitude}`);
+    switch (magnitude) {
+        case 'd':
+            date.setTime( date.getTime()+amount*24*60*60*1000 )
+            break;
+        case 'h':
+            date.setHours(date.getHours() + amount)
+            break;
+        case 'min':
+            date.getMinutes(date.getMinutes() + amount)
+            break;
+        default:
+            break;
+    }
+    return date;
 }
