@@ -45,5 +45,106 @@
         {
             "name": "Xelor"
         }
+    ],
+    "Professions": [
+        {
+            "name": "Alchemist"
+        },
+        {
+            "name": "Artificer"
+        },
+        {
+            "name": "Axe Smith"
+        },
+        {
+            "name": "Axe Smithmagus"
+        },
+        {
+            "name": "Baker"
+        },
+        {
+            "name": "Bow Carver"
+        },
+        {
+            "name": "Bow Carvmagus"
+        },
+        {
+            "name": "Butcher"
+        },
+        {
+            "name": "Costumagus"
+        },
+        {
+            "name": "Dagger Smith"
+        },
+        {
+            "name": "Dagger Smithmagus"
+        },
+        {
+            "name": "Farmer"
+        },
+        {
+            "name": "Fisherman"
+        },
+        {
+            "name": "Fishmonger"
+        },
+        {
+            "name": "Hammer Smith"
+        },
+        {
+            "name": "Hammer Smithmagus"
+        },
+        {
+            "name": "Handyman"
+        },
+        {
+            "name": "Hunter"
+        },
+        {
+            "name": "Jeweller"
+        },
+        {
+            "name": "Jewelmagus"
+        },
+        {
+            "name": "Lumberjack"
+        },
+        {
+            "name": "Miner"
+        },
+        {
+            "name": "Shoemagus"
+        },
+        {
+            "name": "Shoemaker"
+        },
+        {
+            "name": "Shovel Smith"
+        },
+        {
+            "name": "Shovel Smithmagus"
+        },
+        {
+            "name": "Staff Carver"
+        },
+        {
+            "name": "Staff Carvmagus"
+        },
+        {
+            "name": "Sword Smith"
+        },
+        {
+            "name": "Sword Smithmagus"
+        },
+        {
+            "name": "Tailor"
+        },
+        {
+            "name": "Wand Carver"
+        },
+        {
+            "name": " Wand Carvmagus"
+        }
     ]
 }

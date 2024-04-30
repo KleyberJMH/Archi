@@ -1,4 +1,4 @@
-const { Client, ThreadChannel, ActionRowBuilder, EmbedBuilder, Embed, ButtonBuilder, ButtonStyle, ForumChannel, Channel } = require("discord.js");
+const { Client, ThreadChannel, ActionRowBuilder, EmbedBuilder, Embed, ButtonBuilder, ButtonStyle, ForumChannel, Channel , GuildForumTag} = require("discord.js");
 const EventDungSch = require('../../models/eventos/eventDungSch');
 const dList = require('../../Data/DungList.json');
 const eventDungPostPartiEmbedCreate = require("./eventDungPostPartiEmbedCreate");
@@ -13,13 +13,22 @@ const eventDungPostPartiEmbedCreate = require("./eventDungPostPartiEmbedCreate")
 module.exports = async (client, dungeonEvt) => {
     /** @type {ForumChannel}*/
     const board = await client.channels.fetch('1232395814291378258'); //TODO Set up config file
+    const avTags= board.availableTags
+    const tag={name:dungeonEvt.DungName,moderated:false}
+    const index=avTags.findIndex((t) =>{return t.name==dungeonEvt.DungName})
+    if(index==-1){
+        avTags.push(tag)
+        await board.setAvailableTags(avTags)
+    }
     const thread = await board.threads.create({
         name: dungeonEvt.DungName,
         message: {
             embeds: [createInfoEmbed(dungeonEvt), eventDungPostPartiEmbedCreate(dungeonEvt.participants)],
             components: [createButtons(dungeonEvt)],
             autoArchiveDuration: 60
-        }
+        },
+        appliedTags:[board.availableTags.find((t) =>{return t.name==dungeonEvt.DungName}).id]
+        
     });
     console.log(`Created thread: ${thread.name}`);
     return thread;
@@ -58,7 +67,8 @@ function createInfoEmbed(dungeonEvt) {
 
         )
         .setTimestamp()
-        .setFooter({ text: `ID: ${dungeonEvt.eventID}` });
+        .setFooter({ text: `ID: ${dungeonEvt.eventID}` })
+        
     return embed
 }
 

@@ -23,11 +23,7 @@ module.exports = {
         .addSubcommand(subcommand =>
             subcommand
                 .setName('list')
-                .setDescription('List your pjs'))
-        .addSubcommand(subcommand =>
-            subcommand
-                .setName('jobs')
-                .setDescription('list your jobs')),
+                .setDescription('List your pjs')),
 
 
     run: async ({ interaction, client, handler }) => {
@@ -35,6 +31,10 @@ module.exports = {
             interaction.deferReply();
             const user = await getUser(interaction)
             var pj = await pjScrapper(interaction.options.getString('name'))
+            if (pj.PJName != interaction.options.getString('name')) {
+                interaction.editReply('PJ not found')
+                return
+            }
             pj = await updatePjData(pj.urlId)
             if (user.MainPj == null | user.MainPj == undefined) user.MainPj = pj;
             user.Pjs.push(pj)
@@ -42,39 +42,16 @@ module.exports = {
             console.log(res)
             await interaction.editReply(`Added ${pj.PJName}(${pj.PjClass} ${pj.PjLvl})to ${user.DisplayName}`)
         } else if (interaction.options.getSubcommand() === 'list') {
-            const pjList = await getUserPjs(interaction.guild.id, interaction.user.id);
-            if (pjList.length > 0) {
-                const pjListStr = pjList.map(i => `${i.PJName}, ${i.PjClass} ${i.PjLvl}`).join('\n')
-                console.log(pjListStr);
-                interaction.reply(pjListStr)
-            } else {
-                interaction.reply('No PJ found, add one with /pj add')
+            if (interaction.options.getSubcommand() === 'list') {
+                const pjList = await getUserPjs(interaction.guild.id, interaction.user.id);
+                if (pjList.length > 0) {
+                    const pjListStr = pjList.map(i => `${i.PJName}, ${i.PjClass} ${i.PjLvl}`).join('\n')
+                    console.log(pjListStr);
+                    interaction.reply(pjListStr)
+                } else {
+                    interaction.reply('No PJ found, add one with /pj add')
+                }
             }
-        } else if (interaction.options.getSubcommand() === 'jobs') {
-            await interaction.deferReply();
-            const pjList = await getUserPjs(interaction.guild.id, interaction.user.id);
-            const embeds = [];
-
-            pjList.forEach((pj) => {
-                /**@type {import("discord.js").APIEmbedField[]} */
-                const jobs = pj.Professions.map((job) => {
-                    const jobName = job.professionName
-                    const jobLvl = job.professionLvl.toString()
-                    return { name: jobName, value: jobLvl, inline:true}
-                })
-                console.log(pj);
-                const embed = new EmbedBuilder()
-                    .setTitle(pj.PJName)
-                    .addFields(jobs)
-
-                embeds.push(embed)
-            })/*
-                
-            });*/
-            console.log(embeds);
-            interaction.editReply({embeds:embeds})
-
-
         }
     },
     options: {

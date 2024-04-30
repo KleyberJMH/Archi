@@ -43,7 +43,7 @@ module.exports=async(urlID)=>{
             PJName:name,
             PjLvl:level,
             PjClass:pjClass,
-            Professions:jobs            
+            Professions:jobs                    
         })
         
 

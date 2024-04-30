@@ -25,7 +25,7 @@ module.exports = {
                 .addStringOption(option =>
                     option
                         .setName("date")
-                        .setDescription("[NO IMPLEMENTADO]Acepta formato dd/mm/aa hh:mm o bien tiempo relativo (2h, 30m, 1d...)")
+                        .setDescription("Acepta formato dd/mm/aa hh:mm o bien tiempo relativo (2h, 30m, 1d...)")
                         .setRequired(true)
                 )
                 .addIntegerOption(option =>

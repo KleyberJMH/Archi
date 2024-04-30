@@ -6,8 +6,11 @@ const professionSchema = new Schema({
         },
     professionLvl:{
         type:Number,
-        required: true
-        
+        required: true   
+    },
+    public:{
+        type:Boolean,
+        default:false
     }
 })
 module.exports=model('profession',professionSchema)
