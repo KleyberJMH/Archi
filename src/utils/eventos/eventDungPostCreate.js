@@ -2,6 +2,7 @@ const { Client, ThreadChannel, ActionRowBuilder, EmbedBuilder, Embed, ButtonBuil
 const EventDungSch = require('../../models/eventos/eventDungSch');
 const dList = require('../../Data/DungList.json');
 const eventDungPostPartiEmbedCreate = require("./eventDungPostPartiEmbedCreate");
+const GuildConfig = require("../general/GuildConfig");
 
 /**
  * 
@@ -12,7 +13,7 @@ const eventDungPostPartiEmbedCreate = require("./eventDungPostPartiEmbedCreate")
 
 module.exports = async (client, dungeonEvt) => {
     /** @type {ForumChannel}*/
-    const board = await client.channels.fetch('1232395814291378258'); //TODO Set up config file
+    const board = await client.channels.fetch(await GuildConfig.getDungChanId(dungeonEvt.GuildID)); //TODO Set up config file
     const avTags= board.availableTags
     const tag={name:dungeonEvt.DungName,moderated:false}
     const index=avTags.findIndex((t) =>{return t.name==dungeonEvt.DungName})
