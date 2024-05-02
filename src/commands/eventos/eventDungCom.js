@@ -1,5 +1,4 @@
 const { ButtonBuilder, ButtonStyle, SlashCommandBuilder, Client, Message, ClientVoiceManager } = require('discord.js');
-require('any-date-parser');
 const eventDungSchema = require('../../models/eventos/eventDungSch');
 const dList = require('../../Data/DungList.json');
 const eventDungCreate = require('../../utils/eventos/eventDungCreate');
