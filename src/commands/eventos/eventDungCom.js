@@ -60,7 +60,7 @@ module.exports = {
             evID = evID + `${getRandomInt(999, 10000)}`
             evID = evID.toLowerCase().replace(/\D/g, '') ?? '1d'
             const dateStr = interaction.options.getString('date')
-            const date = /\d+[h|min|d]/g.test(dateStr) ? getRelativeDate(dateStr) : Date.fromString(dateStr);
+            const date = /\d+[h|min|d]/g.test(dateStr) ? getRelativeDate(dateStr) : new Date();// Date.fromString(dateStr);
             const newEvent = new eventDungSchema({
                 AuthorID: interaction.user.id,
                 GuildID: interaction.guildId,

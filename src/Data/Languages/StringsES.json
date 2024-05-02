@@ -1,0 +1,25 @@
+{
+    "Events": {
+        "key": "",
+        "value": ""
+    },
+    "Jobs": {
+        "Commands": {
+            "listDesc": "list your jobs",
+            "setpublicDesc": "Make all jobs public",
+            "setonepublicDesc": "Make one job public",
+            "setoneprivateDesc": "Make one job private"
+        },
+        "Buttons": {
+            "CancelNoResponse": "Respuesta no recibida en un minuto, cancelando",
+            "Added": "Añadido ",
+            "Removed": "Eliminado ",
+            "ErrorAdd": "Error añadiendo PJ ",
+            "ErrorRem": "Error eliminando  PJ ",
+            "NotSigned": "PJ no apuntado al evento",
+            "ChoosePJ": "Escoje el PJ",
+            "Selected":"Escogido ",
+            "AlreadySigned": "PJ ya dado de alta al evento"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "Events": {
+        "key": "",
+        "value": ""
+    },
+    "Jobs": {
+        "Commands": {
+            "listDesc": "list your jobs",
+            "setpublicDesc": "Make all jobs public",
+            "setonepublicDesc": "Make one job public",
+            "setoneprivateDesc": "Make one job private"
+        },
+        "Buttons": {
+            "CancelNoResponse": "Confirmation not received within 1 minute, cancelling",
+            "Added": "Added ",
+            "Removed": "Removed ",
+            "ErrorAdd": "Error adding PJ ",
+            "ErrorRem": "Error removing  PJ ",
+            "NotSigned": "Character not signed up for event",
+            "ChoosePJ": "Choose the PJ",
+            "Selected":"Selected ",
+            "AlreadySigned": "Character already signed up for event"
+        }
+    }
+}
