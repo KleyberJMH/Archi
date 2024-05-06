@@ -24,4 +24,5 @@ const userSchema = new Schema({
         type:[PJSchema]
     }
 })
+
 module.exports=model('UserSch',userSchema)
