@@ -1,34 +1,37 @@
-const {SlashCommandBuilder,PermissionFlagsBits,ChannelType,InteractionType }= require('discord.js')
+const { SlashCommandBuilder, User, CommandInteraction } = require('discord.js')
 
-module.exports = { 
-    data:new SlashCommandBuilder()
+module.exports = {
+    data: new SlashCommandBuilder()
     .setName('nickname')
-    .setDescription('Change your discord nickname to you in-game nickname')
-    .addStringOption((option) =>
-        option
-            .setName('nickname')
-            .setDescription('Enter your main in-game nickname')
-            .setRequired(true)
+    .setDescription('[NO FUNCIONA]Change your discord nickname to you in-game nickname')
+    .addStringOption((option) => 
+    option
+        .setName('nickname')
+        .setDescription('Enter your main in-game nickname')
+        .setRequired(true)
     ),
-    run:async ({ interaction, client, handler })=> {
+    run: async ({ interaction, client, handler }) => {
         try {
-            await interaction.deferReply({ ephemeral: true })
+            await interaction.deferReply({ephemeral: true})
             const newNickname = interaction.options.getString('nickname')
-            interaction.member
-            const clanName = member.roles.cache.filter((role) => role.name == '- Mugiwara -')
-    
-            // console.log(clanName.Role.name)
-            // member.nickname = newNickname
+            /** @type {CommandInteraction}*/
+            const inter =  interaction
+            inter.member.nickname = newNickname
+            const clanName = user.roles.cache.filter((role) => role.name == '- Mugiwara -')
+        
             interaction.followUp(`Your nickname has changed to ${newNickname}`)
             return
     
     
         } catch (error) {
             console.log(`Error in ${__filename}:\n`, error)
-        } 
-    
+        }       
     },
-    options:{
-        devOnly: true
+    options: {
+        //cooldown: '1d',
+        devOnly: true,
+        //userPermissions:['Administrator'],
+        //botPermissions:[''],
+        //deleted: true,
     }
 }
