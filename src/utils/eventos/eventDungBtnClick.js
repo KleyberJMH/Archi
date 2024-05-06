@@ -13,7 +13,7 @@ const GuildConfig = require('../general/GuildConfig');
  * @param {ButtonInteraction} interaction 
  */
 module.exports = async (params, interaction) => {
-
+    const channel = interaction.channel
     await interaction.deferReply({ ephemeral: true });
     const strings=GuildConfig.getStrings(await GuildConfig.getLanguage(interaction.guildId),'Jobs.Buttons')
     const userPjs = await getUserPjs(interaction.guildId, interaction.user.id)
