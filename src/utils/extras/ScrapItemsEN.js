@@ -1,7 +1,29 @@
 const cheerio = require('cheerio');
 const fs = require('fs');
 const Humanoid = require("humanoid-js");
-main()
+const { setTimeout } = require("timers/promises");
+const items = require('../../Data/Items test2.json')
+main2()
+async function main2() {
+    let url = 'https://dofuswiki.fandom.com/wiki/'
+    const humanoid = new Humanoid();
+    let i=1;
+    for (const item of items) {
+        console.log(`Item ${i++} of ${items.length}`)
+        try {
+            
+            const val = await humanoid.get(url + item.Name.replace(' ', '_'))
+            if (val.statusCode != 200) continue
+            const $ = cheerio.load(val.body)
+            const $sel = $('a.image')
+            item.ImgUrl2=$sel[0].attribs['href']
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    fs.writeFileSync('../../Data/Items test3.json', JSON.stringify(items))
+
+}
 async function main() {
     let url = '';
     try {
@@ -52,15 +74,13 @@ async function main() {
         console.log('Weapons loaded')
 
         console.log(`Total of ${items.length} items`);
-        let y=1;
+        let y = 1;
         for (const item of items) {
+            await setTimeout(1500)
             console.log(`Details of item ${y++} of ${items.length}\r`);
             const val = await humanoid.get('https://www.dofus-touch.com/es/linker/item?l=en&id=' + item.ItemId)
             if (val.statusCode != 200 || val.body.length < 10) {
                 continue
-            }
-            if(y%100==0){
-                console.log('pausa')
             }
             else {
                 const $ = cheerio.load(val.body)
@@ -68,8 +88,8 @@ async function main() {
                 item.ImgUrl = $img[0].attribs.src
                 const $stats = $('div.ak-title')
                 const stats = $stats.map((i, p) => {
-                    const extra=p.children[1]?.firstChild.data
-                    const str=extra==undefined?'':p.children[1].firstChild.data
+                    const extra = p.children[1]?.firstChild.data
+                    const str = extra == undefined ? '' : p.children[1].firstChild.data
                     return p.firstChild.data.trim() + str
                 })
                 item.Stats = stats.toArray();
@@ -77,7 +97,7 @@ async function main() {
             }
         }
         console.log(items);
-        fs.writeFileSync('../../Data/Items test.json',JSON.stringify(items))
+        fs.writeFileSync('../../Data/Items test2.json', JSON.stringify(items))
     } catch (e) {
         console.error(e);
     }

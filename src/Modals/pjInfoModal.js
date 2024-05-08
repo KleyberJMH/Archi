@@ -23,10 +23,10 @@ module.exports = (id) => {
         .setStyle(TextInputStyle.Short)
         .setRequired(true);
 
-const firstRow= new ActionRowBuilder().addComponents(pjNameInput)
-const secondRow= new ActionRowBuilder().addComponents(pjLvlInput)
-const thirdRow= new ActionRowBuilder().addComponents(pjClassInput)
-    modal.addComponents(firstRow,secondRow,thirdRow)
+    const firstRow = new ActionRowBuilder().addComponents(pjNameInput)
+    const secondRow = new ActionRowBuilder().addComponents(pjLvlInput)
+    const thirdRow = new ActionRowBuilder().addComponents(pjClassInput)
+    modal.addComponents(firstRow, secondRow, thirdRow)
     return modal;
 
 }

@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, CommandInteraction, ChannelType } = require("discord.js");
-const { options, autocomplete } = require("./jobs");
-const { setDungChan } = require("../../utils/general/GuildConfig");
+const { setDungChan, setMarketChan } = require("../../utils/general/GuildConfig");
 const GuildConfig = require("../../utils/general/GuildConfig");
 
 module.exports = {
@@ -22,6 +21,15 @@ module.exports = {
             sc
                 .setName('dungeonchannel')
                 .setDescription('set de channel for the dungeon event posts')
+                .addChannelOption(opt =>
+                    opt
+                        .setName('channel')
+                        .setDescription('Channel')
+                        .addChannelTypes(ChannelType.GuildForum)))
+        .addSubcommand(sc =>
+            sc
+                .setName('marketchannel')
+                .setDescription('set de channel for the market offers posts')
                 .addChannelOption(opt =>
                     opt
                         .setName('channel')
@@ -51,7 +59,11 @@ module.exports = {
                 break;
             case 'dungeonchannel':
                 await setDungChan(interaction.guildId, interaction.options.getChannel('channel').id)
-                await interaction.editReply(`Channel ${interaction.options.getChannel('channel').name} set as the dungeon event board`)
+                await interaction.editReply(`Channel ${interaction.options.getChannel('channel').name} set as the market offers board`)
+                break;
+            case 'marketchannel':
+                await setMarketChan(interaction.guildId, interaction.options.getChannel('channel').id)
+                await interaction.editReply(`Channel ${interaction.options.getChannel('channel').name} set as the market offers board`)
                 break;
 
             default:

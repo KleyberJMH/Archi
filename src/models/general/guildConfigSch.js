@@ -9,6 +9,10 @@ const guildConfigSchema = new Schema({
         type: String,
         default: ""
     },
+    MarketPostsChannel: {
+        type: String,
+        default: ""
+    },
     Language: {
         type: String,
         default: 'en'

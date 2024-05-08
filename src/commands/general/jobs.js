@@ -6,7 +6,6 @@ const jobsOnePublic = require("../../utils/jobs/jobsOnePublic.js");
 const jobsOnePrivate = require("../../utils/jobs/jobsOnePrivate.js");
 const jobsFind = require("../../utils/jobs/jobsFind.js");
 const jobList=require("../../Data/General.json").Professions
-const { autocomplete } = require("../eventos/eventDungCom.js");
 
 
 module.exports = {

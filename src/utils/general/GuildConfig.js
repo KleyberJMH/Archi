@@ -46,9 +46,18 @@ module.exports = {
         config.DungeonPostsChannel = chanId
         return (await guildConfigSch.replaceOne({ GuildId: config.GuildId }, config).exec()).modifiedCount
     },
+    async setMarketChan(guildId, chanId) {
+        const config = await getAll(guildId)
+        config.MarketPostsChannel = chanId
+        return (await guildConfigSch.replaceOne({ GuildId: config.GuildId }, config).exec()).modifiedCount
+    },
     async getDungChanId(guildId) {
         const res = await guildConfig.findOne({ GuildId: guildId }).exec()
         return res.DungeonPostsChannel
+    },
+    async getMarketChanId(guildId) {
+        const res = await guildConfig.findOne({ GuildId: guildId }).exec()
+        return res.MarketPostsChannel
     }
 }
 

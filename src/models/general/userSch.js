@@ -1,4 +1,4 @@
-const { Schema, model, Mongoose } = require('mongoose');
+const { Schema, model} = require('mongoose');
 const PJSchema = require('./pjSch.js').schema
 const userSchema = new Schema({
     GuildId: {

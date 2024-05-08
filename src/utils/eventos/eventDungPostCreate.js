@@ -13,7 +13,7 @@ const GuildConfig = require("../general/GuildConfig");
 
 module.exports = async (client, dungeonEvt) => {
     /** @type {ForumChannel}*/
-    const board = await client.channels.fetch(await GuildConfig.getDungChanId(dungeonEvt.GuildID)); //TODO Set up config file
+    const board = await client.channels.fetch(await GuildConfig.getDungChanId(dungeonEvt.GuildID));
     const avTags= board.availableTags
     const tag={name:dungeonEvt.DungName,moderated:false}
     const index=avTags.findIndex((t) =>{return t.name==dungeonEvt.DungName})
@@ -55,8 +55,8 @@ function createInfoEmbed(dungeonEvt) {
         .setColor(0x0099FF)
         .setTitle(dungeonEvt.DungName ?? 'missing tittle')
         .setDescription(dungeonEvt.Description ?? "no desc")
-        .setThumbnail(iUrl)
-        .setImage(iUrl)
+        .setThumbnail({URL:iUrl})
+        .setImage({URL:iUrl})
         .addFields(
             { name: new Date(dungeonEvt.eventDate).toDateString(), value: new Date(dungeonEvt.eventDate).toTimeString() },
             { name: `Desired people: ${dungeonEvt.DesiredPeople}`, value: peopleLiteral },
