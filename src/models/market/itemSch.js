@@ -1,4 +1,5 @@
 const { Schema, model} = require('mongoose');
+const {StatSch}=require('./statSch').schema
 const itemSchema=new Schema({
     Name:{
         type:String,
@@ -21,7 +22,7 @@ const itemSchema=new Schema({
         default:""
     },
     Stats:{
-        type:[String],
+        type:[StatSch],
         required:true
     },
 })

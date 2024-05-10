@@ -2,8 +2,56 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const Humanoid = require("humanoid-js");
 const { setTimeout } = require("timers/promises");
-const items = require('../../Data/Items test2.json')
-main2()
+const items = require('../../Data/Items.json')
+const StatSchema=require('../../models/market/statSch')
+main4()
+
+function main4(){
+    let uniqueCaracs=new Set();
+    for (const item of items) {
+        for (const stat of item.Stats) {
+            uniqueCaracs.add(stat.Caracteristic)
+        }
+        
+    }
+    uniqueCaracs.forEach((u)=>{console.log(u)})
+    console.log(uniqueCaracs)
+}
+function main3(){
+for (const item of items) {
+    const strArr=item.Stats;
+    const statArr=[]
+    for (const str of strArr) {
+        const stat=statFromStr(str)
+        statArr.push(stat)
+    }
+    item.Stats=statArr;
+    
+}
+fs.writeFileSync('../../Data/Items test4.json', JSON.stringify(items))
+console.log(items)
+}
+/**
+ * 
+ * @param {String} str 
+ * @returns {{String, String}}
+ */
+function statFromStr(str){
+    const matches=str.match(/(-?\d+(?: to -?\d+)?)(.+)/)
+    if (matches==null) return new StatSchema({Caracteristic:'Other', Value:str})
+    try {
+        
+        const stat= {
+            Caracteristic: matches[2].trim(),
+            Value: matches[1].trim()
+        }
+        return stat
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
 async function main2() {
     let url = 'https://dofuswiki.fandom.com/wiki/'
     const humanoid = new Humanoid();
